@@ -1,0 +1,13 @@
+{
+  "name": "thought-for-the-day",
+  "version": "1.0.0",
+  "description": "desktop applicaton to get affirmation",
+  "license": "ISC",
+  "author": "Uzma Shaheen",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

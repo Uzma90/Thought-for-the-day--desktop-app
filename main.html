@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Thought for the Day</title>
+
+    <style>
+        body {
+            font-family: 'fantasy', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            transition: background 0.5s ease;
+        }
+
+        .container {
+            width: 420px;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            backdrop-filter: glass(10px);
+            background: rgba(163, 151, 93, 0.85);
+            box-shadow: 0px 6px 15px rgba(232, 225, 225, 0.15);
+        }
+
+        .date {
+            font-size: 12px;
+            color: rgb(90, 74, 14);
+            margin-bottom: 10px;
+        }
+
+        .thought-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .quote {
+            font-size: 16px;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .explanation {
+            font-size: 14px;
+            color: #440f0f;
+            margin-bottom: 15px;
+        }
+
+        .clock {
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Background Themes */
+        .morning {
+            background: url("assets/morning.jpg") no-repeat center center/cover;
+        }
+
+        .afternoon {
+            background: url("assets/afternoon.jpg") no-repeat center center/cover;
+        }
+
+        .evening {
+            background: url("assets/evening.jpg") no-repeat center center/cover;
+        }
+
+        .night {
+            background: url("assets/night.jpg") no-repeat center center/cover;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="date" id="date"></div>
+    <div class="thought-title">Thought for the Day</div>
+    <div class="quote">"Success is the sum of small efforts repeated daily."</div>
+    <div class="explanation">
+        Consistency matters more than intensity. Small actions done every day create long-term success.
+    </div>
+    <div class="clock" id="clock"></div>
+</div>
+
+<script>
+    function updateTime() {
+        const now = new Date();
+
+        // Convert to IST
+        const istTime = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+
+        // Format Date
+        const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById("date").innerText =
+            istTime.toLocaleDateString("en-IN", dateOptions);
+
+        // Format Time
+        document.getElementById("clock").innerText =
+            istTime.toLocaleTimeString("en-IN");
+
+        // Background Change Logic
+        const hour = istTime.getHours();
+        document.body.classList.remove("morning", "evening", "night");
+
+        if (hour >= 5 && hour < 12) {
+            document.body.classList.add("morning");
+        } else if (hour >= 12 && hour < 16) {
+            document.body.classList.add("afternoon");
+        } else if (hour >= 16 && hour < 20) {
+            document.body.classList.add("evening");    
+        } else {
+            document.body.classList.add("night");
+        }
+    }
+
+    updateTime();
+    setInterval(updateTime, 1000);
+</script>
+
+</body>
+</html>

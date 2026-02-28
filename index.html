@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Reflection</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: url("assets/start.jpg") no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+}
+
+.title {
+    margin-top: 60px;
+    font-size: 42px;
+}
+
+.tap-text {
+    margin-bottom: 40px;
+    font-size: 18px;
+    opacity: 0.8;
+    animation: fade 2s infinite alternate;
+}
+
+@keyframes fade {
+    from { opacity: 0.3; }
+    to { opacity: 1; }
+}
+</style>
+</head>
+
+<body onclick="startApp()">
+
+<script>
+function startApp() {
+    window.location.href = "transition.html";
+}
+</script>
+
+</body>
+</html>
